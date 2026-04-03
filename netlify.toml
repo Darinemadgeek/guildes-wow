@@ -3,3 +3,5 @@
   to = "https://realm.way-of-elendil.fr/api/realm/characters/:id"
   status = 200
   force = true
+  [redirects.headers]
+    Accept = "application/json"
