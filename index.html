@@ -7,105 +7,150 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#06080d;--s1:#0c1018;--s2:#111622;--s3:#161d2e;--b1:#1e2540;--b2:#252d48;
-  --ils-a:#c8a84b;--ils-glow:rgba(200,168,75,0.10);
-  --cry-a:#4a88d8;--cry-glow:rgba(74,136,216,0.10);
-  --txt:#d0d4e0;--dim:#7a8398;--muted:#3a4258;
-  --warrior:#C69B3A;--paladin:#F48CBA;--hunter:#AAD372;--rogue:#FFF468;
-  --priest:#FFFFFF;--shaman:#0070DD;--mage:#3FC7EB;--warlock:#8788EE;
-  --druid:#FF7C0A;--deathknight:#C41E3A;--unknown:#3a4258;
+  --bg:       #06080d;
+  --s1:       #0c1018;
+  --s2:       #111622;
+  --s3:       #161d2e;
+  --b1:       #1e2540;
+  --b2:       #252d48;
+  --ils-a:    #c8a84b;
+  --ils-glow: rgba(200,168,75,0.10);
+  --cry-a:    #4a88d8;
+  --cry-glow: rgba(74,136,216,0.10);
+  --txt:      #d0d4e0;
+  --dim:      #7a8398;
+  --muted:    #3a4258;
+  --warrior:     #C69B3A;
+  --paladin:     #F48CBA;
+  --hunter:      #AAD372;
+  --rogue:       #FFF468;
+  --priest:      #FFFFFF;
+  --shaman:      #0070DD;
+  --mage:        #3FC7EB;
+  --warlock:     #8788EE;
+  --druid:       #FF7C0A;
+  --deathknight: #C41E3A;
+  --unknown:     #3a4258;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--txt);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;padding:40px 20px 80px}
-.hdr{text-align:center;margin-bottom:44px}
-.hdr-eye{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.5em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
-.hdr-title{font-family:'Cinzel',serif;font-size:32px;font-weight:900;background:linear-gradient(150deg,#e8d598,#c8a84b 40%,#f0e090 65%,#9a6a18);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hdr-line{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
-.hdr-rule{width:70px;height:1px;background:linear-gradient(to right,transparent,var(--b2))}
-.hdr-rule.r{background:linear-gradient(to left,transparent,var(--b2))}
-.hdr-dot{width:3px;height:3px;border-radius:50%;background:var(--muted)}
-.sync-bar{text-align:center;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.15em;margin-bottom:20px;min-height:16px}
-.sync-bar.saving{color:#c8a84b}.sync-bar.saved{color:#5acc88}.sync-bar.err{color:#cc5555}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1160px;margin:0 auto}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-.panel{border-radius:12px;overflow:visible;border:1px solid var(--b2);background:var(--s1)}
-.panel-hdr{padding:15px 20px;display:flex;align-items:center;gap:13px;border-bottom:1px solid var(--b1);border-radius:12px 12px 0 0;position:relative;overflow:hidden}
-.panel-hdr::before{content:'';position:absolute;inset:0;pointer-events:none}
-.ils .panel-hdr::before{background:linear-gradient(90deg,var(--ils-glow),transparent 70%)}
-.cry .panel-hdr::before{background:linear-gradient(90deg,var(--cry-glow),transparent 70%)}
-.emblem{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:16px;font-weight:900;flex-shrink:0;position:relative;z-index:1}
-.ils .emblem{background:linear-gradient(135deg,#5a3a08,#c8a84b);color:#0a0800;box-shadow:0 0 18px rgba(200,168,75,.25)}
-.cry .emblem{background:linear-gradient(135deg,#0e2250,#4a88d8);color:#d0e4ff;box-shadow:0 0 18px rgba(74,136,216,.25)}
-.guild-name-el{font-family:'Cinzel',serif;font-size:16px;font-weight:700;letter-spacing:.07em;position:relative;z-index:1}
-.ils .guild-name-el{color:var(--ils-a)}.cry .guild-name-el{color:var(--cry-a)}
-.guild-sub{font-size:11px;color:var(--muted);font-family:'Cinzel',serif;letter-spacing:.1em;margin-top:3px;position:relative;z-index:1}
-.add-main-btn{margin-left:auto;position:relative;z-index:1;display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;background:transparent;border:1px dashed var(--muted);color:var(--dim);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;cursor:pointer;transition:all .15s}
-.add-main-btn:hover{border-color:var(--dim);color:var(--txt)}
-.col-hdrs{display:grid;grid-template-columns:1fr 70px;padding:6px 20px;border-bottom:1px solid var(--b1);background:rgba(255,255,255,.012)}
-.col-h{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.col-h.r{text-align:right}
-.player{display:grid;grid-template-columns:1fr 70px 20px;align-items:center;padding:9px 20px;border-bottom:1px solid rgba(255,255,255,.03);transition:background .12s}
-.player:last-of-type{border-bottom:none}
-.player:hover{background:rgba(255,255,255,.02)}
-.player-left{display:flex;align-items:center;gap:9px;min-width:0}
-.fac{width:15px;height:15px;flex-shrink:0}
-.main-name{font-size:16px;font-weight:400;letter-spacing:.01em;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .12s}
-a.main-name:hover{opacity:.75;text-decoration:underline}
-.ilvl-cell{text-align:right;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.04em}
-.ilvl-epic{color:#ff8000}.ilvl-rare{color:#a335ee}.ilvl-normal{color:var(--dim)}.ilvl-none{color:var(--muted)}
-.del-player{display:none;width:16px;height:16px;border-radius:50%;background:#6a0f0f;color:#ffaaaa;font-size:9px;align-items:center;justify-content:center;cursor:pointer;border:1px solid #b01818;line-height:1;flex-shrink:0}
-.player:hover .del-player{display:flex}
-.rerolls-row{padding:0 20px 10px 44px;display:flex;flex-wrap:wrap;gap:5px}
-.chip-wrap{position:relative;display:inline-block}
-.chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;padding:2px 10px 2px 7px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);text-decoration:none;transition:background .12s;cursor:pointer;position:relative}
-a.chip:hover{background:rgba(255,255,255,.1)}
-.chip-fac{width:12px;height:12px;flex-shrink:0}
-.chip-del{display:none;position:absolute;top:-5px;right:-5px;width:12px;height:12px;border-radius:50%;background:#6a0f0f;color:#ffaaaa;font-size:8px;align-items:center;justify-content:center;cursor:pointer;border:1px solid #b01818;line-height:1;z-index:10}
-.chip:hover .chip-del{display:flex}
-.tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--s3);border:1px solid var(--b2);border-radius:8px;padding:9px 13px;white-space:nowrap;z-index:100;box-shadow:0 8px 30px rgba(0,0,0,.7);pointer-events:none}
-.chip-wrap:hover .tooltip{display:block}
-.tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--b2)}
-.tt-name{font-size:14px;margin-bottom:4px}
-.tt-row{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--dim);margin-top:3px}
-.tt-sep{color:var(--muted)}
-.add-reroll-btn{font-size:11px;padding:2px 9px;border-radius:14px;background:transparent;border:1px dashed var(--muted);color:var(--muted);cursor:pointer;font-family:'Crimson Pro',serif;transition:all .15s}
-.add-reroll-btn:hover{border-color:var(--dim);color:var(--txt)}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
-.overlay.open{display:flex}
-.modal{background:var(--s2);border:1px solid var(--b2);border-radius:14px;padding:28px 28px 24px;width:400px;max-width:95vw;box-shadow:0 28px 70px rgba(0,0,0,.8);position:relative}
-.modal-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;transition:color .12s;line-height:1}
-.modal-x:hover{color:var(--txt)}
-.modal-title{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:5px}
-.modal-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:20px}
-.modal-desc em{color:var(--dim);font-style:normal}
-.lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
-.inp{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--b2);border-radius:7px;color:var(--txt);font-family:'Crimson Pro',serif;font-size:14px;padding:9px 12px;outline:none;transition:border-color .15s;margin-bottom:14px}
-.inp:focus{border-color:#3a4a6a}
-.inp::placeholder{color:var(--muted)}
-select.inp{cursor:pointer}
-.modal-status{min-height:18px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.ok{color:#5acc88}.err{color:#cc5555}
-.preview{display:none;border:1px solid var(--b2);border-radius:8px;padding:11px 14px;margin-bottom:16px;background:rgba(255,255,255,.03)}
-.preview.show{display:block}
-.prev-name{font-size:18px;margin-bottom:3px}
-.prev-meta{font-size:12px;font-family:'Cinzel',serif;letter-spacing:.07em;color:var(--dim);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.modal-actions{display:flex;gap:10px;justify-content:flex-end}
-.btn{padding:8px 18px;border-radius:7px;font-family:'Crimson Pro',serif;font-size:14px;cursor:pointer;border:1px solid var(--b2);background:transparent;color:var(--dim);transition:all .15s}
-.btn:hover{border-color:#3a4a6a;color:var(--txt)}
-.btn-ok{background:linear-gradient(135deg,#162040,#1e2e58);border-color:#2a3a60;color:#7aadee;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;opacity:.35;pointer-events:none}
-.btn-ok.on{opacity:1;pointer-events:all}
-.btn-ok.on:hover{background:linear-gradient(135deg,#1a2848,#243468)}
-.spin{width:13px;height:13px;border-radius:50%;border:2px solid rgba(255,255,255,.08);border-top-color:var(--dim);animation:rot .7s linear infinite;display:inline-block;flex-shrink:0}
-@keyframes rot{to{transform:rotate(360deg)}}
-.cc-warrior{color:var(--warrior)}.cc-paladin{color:var(--paladin)}.cc-hunter{color:var(--hunter)}.cc-rogue{color:var(--rogue)}.cc-priest{color:var(--priest)}.cc-shaman{color:var(--shaman)}.cc-mage{color:var(--mage)}.cc-warlock{color:var(--warlock)}.cc-druid{color:var(--druid)}.cc-deathknight{color:var(--deathknight)}.cc-unknown{color:var(--unknown)}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--txt);
+  font-family: 'Crimson Pro', Georgia, serif;
+  min-height: 100vh; padding: 40px 20px 80px;
+}
+.hdr { text-align: center; margin-bottom: 44px; }
+.hdr-eye { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.5em; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+.hdr-title {
+  font-family: 'Cinzel', serif; font-size: 32px; font-weight: 900;
+  background: linear-gradient(150deg,#e8d598,#c8a84b 40%,#f0e090 65%,#9a6a18);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hdr-line { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 14px; }
+.hdr-rule { width: 70px; height: 1px; background: linear-gradient(to right, transparent, var(--b2)); }
+.hdr-rule.r { background: linear-gradient(to left, transparent, var(--b2)); }
+.hdr-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
+.sync-bar { text-align: center; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .15em; margin-bottom: 20px; min-height: 16px; }
+.sync-bar.saving { color: #c8a84b; }
+.sync-bar.saved  { color: #5acc88; }
+.sync-bar.err    { color: #cc5555; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1160px; margin: 0 auto; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+.panel { border-radius: 12px; overflow: visible; border: 1px solid var(--b2); background: var(--s1); }
+.panel-hdr { padding: 15px 20px; display: flex; align-items: center; gap: 13px; border-bottom: 1px solid var(--b1); border-radius: 12px 12px 0 0; position: relative; overflow: hidden; }
+.panel-hdr::before { content: ''; position: absolute; inset: 0; pointer-events: none; }
+.ils .panel-hdr::before { background: linear-gradient(90deg, var(--ils-glow), transparent 70%); }
+.cry .panel-hdr::before { background: linear-gradient(90deg, var(--cry-glow), transparent 70%); }
+.emblem { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 16px; font-weight: 900; flex-shrink: 0; position: relative; z-index: 1; }
+.ils .emblem { background: linear-gradient(135deg,#5a3a08,#c8a84b); color: #0a0800; box-shadow: 0 0 18px rgba(200,168,75,.25); }
+.cry .emblem { background: linear-gradient(135deg,#0e2250,#4a88d8); color: #d0e4ff; box-shadow: 0 0 18px rgba(74,136,216,.25); }
+.guild-name-el { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700; letter-spacing: .07em; position: relative; z-index: 1; }
+.ils .guild-name-el { color: var(--ils-a); }
+.cry .guild-name-el { color: var(--cry-a); }
+.guild-sub { font-size: 11px; color: var(--muted); font-family: 'Cinzel', serif; letter-spacing: .1em; margin-top: 3px; position: relative; z-index: 1; }
+.add-main-btn { margin-left: auto; position: relative; z-index: 1; display: flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; background: transparent; border: 1px dashed var(--muted); color: var(--dim); font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .1em; cursor: pointer; transition: all .15s; }
+.add-main-btn:hover { border-color: var(--dim); color: var(--txt); }
+.col-hdrs { display: grid; grid-template-columns: 1fr 70px; padding: 6px 20px; border-bottom: 1px solid var(--b1); background: rgba(255,255,255,.012); }
+.col-h { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.col-h.r { text-align: right; }
+.player { display: grid; grid-template-columns: 1fr 70px 20px; align-items: center; padding: 9px 20px; border-bottom: 1px solid rgba(255,255,255,.03); transition: background .12s; }
+.player:last-of-type { border-bottom: none; }
+.player:hover { background: rgba(255,255,255,.02); }
+.player-left { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.fac { width: 15px; height: 15px; flex-shrink: 0; }
+.main-name { font-size: 16px; font-weight: 400; letter-spacing: .01em; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: opacity .12s; }
+a.main-name:hover { opacity: .75; text-decoration: underline; }
+.ilvl-cell { text-align: right; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .04em; }
+.ilvl-epic   { color: #ff8000; }
+.ilvl-rare   { color: #a335ee; }
+.ilvl-normal { color: var(--dim); }
+.ilvl-none   { color: var(--muted); }
+.del-player { display: none; width: 16px; height: 16px; border-radius: 50%; background: #6a0f0f; color: #ffaaaa; font-size: 9px; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #b01818; line-height: 1; flex-shrink: 0; }
+.player:hover .del-player { display: flex; }
+.rerolls-row { padding: 0 20px 10px 44px; display: flex; flex-wrap: wrap; gap: 5px; }
+.chip-wrap { position: relative; display: inline-block; }
+.chip { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; padding: 2px 10px 2px 7px; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.07); text-decoration: none; transition: background .12s; cursor: pointer; position: relative; }
+a.chip:hover { background: rgba(255,255,255,.1); }
+.chip-fac { width: 12px; height: 12px; flex-shrink: 0; }
+.chip-del { display: none; position: absolute; top: -5px; right: -5px; width: 12px; height: 12px; border-radius: 50%; background: #6a0f0f; color: #ffaaaa; font-size: 8px; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #b01818; line-height: 1; z-index: 10; }
+.chip:hover .chip-del { display: flex; }
+.tooltip { display: none; position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--s3); border: 1px solid var(--b2); border-radius: 8px; padding: 9px 13px; white-space: nowrap; z-index: 100; box-shadow: 0 8px 30px rgba(0,0,0,.7); pointer-events: none; }
+.chip-wrap:hover .tooltip { display: block; }
+.tooltip::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: var(--b2); }
+.tt-name { font-size: 14px; margin-bottom: 4px; }
+.tt-row { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--dim); margin-top: 3px; }
+.tt-sep { color: var(--muted); }
+.add-reroll-btn { font-size: 11px; padding: 2px 9px; border-radius: 14px; background: transparent; border: 1px dashed var(--muted); color: var(--muted); cursor: pointer; font-family: 'Crimson Pro', serif; transition: all .15s; }
+.add-reroll-btn:hover { border-color: var(--dim); color: var(--txt); }
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 300; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+.overlay.open { display: flex; }
+.modal { background: var(--s2); border: 1px solid var(--b2); border-radius: 14px; padding: 28px 28px 24px; width: 380px; max-width: 95vw; box-shadow: 0 28px 70px rgba(0,0,0,.8); position: relative; }
+.modal-x { position: absolute; top: 14px; right: 16px; background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; transition: color .12s; line-height: 1; }
+.modal-x:hover { color: var(--txt); }
+.modal-title { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-bottom: 5px; }
+.modal-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 20px; }
+.modal-desc em { color: var(--dim); font-style: normal; }
+.lbl { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+.inp { width: 100%; background: rgba(255,255,255,.04); border: 1px solid var(--b2); border-radius: 7px; color: var(--txt); font-family: 'Crimson Pro', serif; font-size: 14px; padding: 9px 12px; outline: none; transition: border-color .15s; margin-bottom: 16px; }
+.inp:focus { border-color: #3a4a6a; }
+.inp::placeholder { color: var(--muted); }
+.modal-status { min-height: 18px; font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.ok  { color: #5acc88; }
+.err { color: #cc5555; }
+.preview { display: none; border: 1px solid var(--b2); border-radius: 8px; padding: 11px 14px; margin-bottom: 16px; background: rgba(255,255,255,.03); }
+.preview.show { display: block; }
+.prev-name { font-size: 18px; margin-bottom: 3px; }
+.prev-meta { font-size: 12px; font-family: 'Cinzel', serif; letter-spacing: .07em; color: var(--dim); display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+.btn { padding: 8px 18px; border-radius: 7px; font-family: 'Crimson Pro', serif; font-size: 14px; cursor: pointer; border: 1px solid var(--b2); background: transparent; color: var(--dim); transition: all .15s; }
+.btn:hover { border-color: #3a4a6a; color: var(--txt); }
+.btn-ok { background: linear-gradient(135deg,#162040,#1e2e58); border-color: #2a3a60; color: #7aadee; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .08em; opacity: .35; pointer-events: none; }
+.btn-ok.on { opacity: 1; pointer-events: all; }
+.btn-ok.on:hover { background: linear-gradient(135deg,#1a2848,#243468); }
+.spin { width: 13px; height: 13px; border-radius: 50%; border: 2px solid rgba(255,255,255,.08); border-top-color: var(--dim); animation: rot .7s linear infinite; display: inline-block; flex-shrink: 0; }
+@keyframes rot { to { transform: rotate(360deg); } }
+.cc-warrior     { color: var(--warrior); }
+.cc-paladin     { color: var(--paladin); }
+.cc-hunter      { color: var(--hunter); }
+.cc-rogue       { color: var(--rogue); }
+.cc-priest      { color: var(--priest); }
+.cc-shaman      { color: var(--shaman); }
+.cc-mage        { color: var(--mage); }
+.cc-warlock     { color: var(--warlock); }
+.cc-druid       { color: var(--druid); }
+.cc-deathknight { color: var(--deathknight); }
+.cc-unknown     { color: var(--unknown); }
 </style>
 </head>
 <body>
+
 <header class="hdr">
-  <p class="hdr-eye">made in Åna &nbsp;·&nbsp; World of Cry Havoc</p>
-  <h1 class="hdr-title">L'Alliance des Guildes</h1>
-  <div class="hdr-line"><div class="hdr-rule"></div><div class="hdr-dot"></div><div class="hdr-rule r"></div></div>
+  <p class="hdr-eye">Way of Elendil &nbsp;·&nbsp; Wrath of the Lich King</p>
+  <h1 class="hdr-title">Roster des Guildes</h1>
+  <div class="hdr-line">
+    <div class="hdr-rule"></div><div class="hdr-dot"></div><div class="hdr-rule r"></div>
+  </div>
 </header>
+
 <div class="sync-bar" id="syncBar"></div>
 <div class="grid" id="grid"></div>
 
@@ -113,11 +158,10 @@ select.inp{cursor:pointer}
   <div class="modal">
     <button class="modal-x" id="modalX">×</button>
     <div class="modal-title" id="modalTitle">Ajouter un membre</div>
-    <p class="modal-desc">Entre l'<em>ID du personnage</em> trouvé dans l'URL de l'armurerie :<br>…/armory/character/<em>709471</em></p>
+    <p class="modal-desc">Entre l'<em>ID du personnage</em> — tu le trouves dans l'URL de l'armurerie :<br>…/armory/character/<em>709471</em></p>
     <label class="lbl">ID du personnage</label>
-    <input class="inp" id="idInput" type="text" placeholder="ex: 709471"/>
+    <input class="inp" id="idInput" type="text" placeholder="ex: 709471" />
     <div class="modal-status" id="mStatus"></div>
-    <div id="manualWrap"></div>
     <div class="preview" id="preview">
       <div class="prev-name" id="prevName"></div>
       <div class="prev-meta" id="prevMeta"></div>
@@ -129,29 +173,43 @@ select.inp{cursor:pointer}
   </div>
 </div>
 
-<script>
-const MASTER_KEY='$2a$10$2lPplWnGDwtIg5yWmjCj4OIGMlX6GNYNF8t3aEqj20flMp/gtGF0u';
-const BIN_ID='69cfe15536566621a8778fc4';
-const BIN_URL=`https://api.jsonbin.io/v3/b/${BIN_ID}`;
-const ARMORY='https://way-of-elendil.fr/armory/character/';
-const WOE_API='/api/character/';
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getDatabase, ref, onValue, set } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
-const CLASS_MAP={
+// ── Config Firebase ────────────────────────────────────────────────────────
+const firebaseConfig = {
+  databaseURL: 'https://guildes-wow-default-rtdb.europe-west1.firebasedatabase.app',
+};
+const app = initializeApp(firebaseConfig);
+const db  = getDatabase(app);
+const dbRef = ref(db, 'roster');
+
+// ── Constants ──────────────────────────────────────────────────────────────
+const ARMORY  = 'https://way-of-elendil.fr/armory/character/';
+const WOE_API = '/api/character/';
+
+const CLASS_MAP = {
   1:{key:'warrior',label:'Guerrier'},2:{key:'paladin',label:'Paladin'},
   3:{key:'hunter',label:'Chasseur'},4:{key:'rogue',label:'Voleur'},
   5:{key:'priest',label:'Prêtre'},6:{key:'deathknight',label:'Chevalier de la mort'},
   7:{key:'shaman',label:'Chaman'},8:{key:'mage',label:'Mage'},
   9:{key:'warlock',label:'Démoniste'},11:{key:'druid',label:'Druide'},
 };
-const RACE_FAC={1:'a',3:'a',4:'a',7:'a',11:'a',22:'a',2:'h',5:'h',6:'h',8:'h',9:'h',10:'h'};
-const GUILDS=[{key:'ILS',label:'ILS',icon:'I',cls:'ils'},{key:'Cry Havoc',label:'Cry Havoc',icon:'C',cls:'cry'}];
+const RACE_FAC = {1:'a',3:'a',4:'a',7:'a',11:'a',22:'a',2:'h',5:'h',6:'h',8:'h',9:'h',10:'h'};
+const GUILDS   = [
+  {key:'ILS',label:'ILS',icon:'I',cls:'ils'},
+  {key:'CryHavoc',label:'Cry Havoc',icon:'C',cls:'cry'},
+];
 
 function svgH(s=15){return`<svg width="${s}" height="${s}" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7.5" fill="#5c0f0f"/><path d="M8 1.5L10.8 6.5L15 6.5L11.5 10L13 15L8 11.8L3 15L4.5 10L1 6.5L5.2 6.5Z" fill="#e03030"/></svg>`;}
 function svgA(s=15){return`<svg width="${s}" height="${s}" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7.5" fill="#0c1e50"/><path d="M8 1.5L10.8 6.5L15 6.5L11.5 10L13 15L8 11.8L3 15L4.5 10L1 6.5L5.2 6.5Z" fill="#4a88e8"/></svg>`;}
 function fac(f,s){return f==='h'?svgH(s):f==='a'?svgA(s):'';}
 function ilvlCls(v){if(!v)return'ilvl-none';if(v>=270)return'ilvl-epic';if(v>=245)return'ilvl-rare';return'ilvl-normal';}
 
-let data={ILS:[],'Cry Havoc':[]};
+// ── Data ───────────────────────────────────────────────────────────────────
+let data = {ILS:[], CryHavoc:[]};
 
 function setSync(state,msg=''){
   const el=document.getElementById('syncBar');
@@ -159,40 +217,30 @@ function setSync(state,msg=''){
   el.textContent=msg;
 }
 
-async function loadData(){
-  setSync('saving','Chargement…');
-  try{
-    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':MASTER_KEY,'X-Bin-Meta':'false'}});
-    if(!r.ok) throw new Error(`HTTP ${r.status}`);
-    data=await r.json();
+// Écoute en temps réel Firebase
+onValue(dbRef, (snapshot) => {
+  const val = snapshot.val();
+  if (val) {
+    data = val;
     if(!data.ILS) data.ILS=[];
-    if(!data['Cry Havoc']) data['Cry Havoc']=[];
-    render();
-    setSync('saved','✓ Données chargées');
-    setTimeout(()=>setSync('',''),2500);
-  }catch(e){
-    console.error('Load:',e);
-    setSync('err','Erreur de chargement ('+e.message+')');
-    render();
+    if(!data.CryHavoc) data.CryHavoc=[];
   }
-}
+  render();
+  setSync('saved','✓ Données chargées');
+  setTimeout(()=>setSync('',''), 2500);
+}, (error) => {
+  setSync('err','Erreur de connexion Firebase');
+  render();
+});
 
-let saveTimer;
-function scheduleSave(){
-  clearTimeout(saveTimer);
+function saveData() {
   setSync('saving','Sauvegarde…');
-  saveTimer=setTimeout(async()=>{
-    try{
-      const r=await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':MASTER_KEY},body:JSON.stringify(data)});
-      if(!r.ok) throw new Error(`HTTP ${r.status}`);
-      setSync('saved','✓ Sauvegardé');
-      setTimeout(()=>setSync('',''),2500);
-    }catch(e){
-      setSync('err','Erreur de sauvegarde');
-    }
-  },1000);
+  set(dbRef, data)
+    .then(()=>{ setSync('saved','✓ Sauvegardé'); setTimeout(()=>setSync('',''),2500); })
+    .catch(()=>{ setSync('err','Erreur de sauvegarde'); });
 }
 
+// ── WoW API ────────────────────────────────────────────────────────────────
 async function fetchWoW(id){
   try{
     const r=await fetch(WOE_API+id,{headers:{Accept:'application/json'}});
@@ -205,37 +253,33 @@ function parseWoW(j,id){
   const ci=CLASS_MAP[j.class];
   const fRaw=j.faction??j.guild?.guild?.faction??null;
   const faction=fRaw===0?'a':fRaw===1?'h':RACE_FAC[j.race]||null;
-  return{id:String(id),name:j.name||'?',classKey:ci?.key||'unknown',classLabel:ci?.label||'',faction,level:j.level||null,ilvl:j.item_level||null};
+  return {id:String(id),name:j.name||'?',classKey:ci?.key||'unknown',classLabel:ci?.label||'',faction,level:j.level||null,ilvl:j.item_level||null};
 }
 
 // ── Modal ──────────────────────────────────────────────────────────────────
 let mMode='main',mGuild='ILS',mTarget=null,pending=null;
-const overlay=document.getElementById('overlay');
-const idInput=document.getElementById('idInput');
-const mStatus=document.getElementById('mStatus');
-const manualWrap=document.getElementById('manualWrap');
+const overlay  =document.getElementById('overlay');
+const idInput  =document.getElementById('idInput');
+const mStatus  =document.getElementById('mStatus');
 const previewEl=document.getElementById('preview');
-const prevName=document.getElementById('prevName');
-const prevMeta=document.getElementById('prevMeta');
-const btnOk=document.getElementById('btnOk');
-const mTitle=document.getElementById('modalTitle');
+const prevName =document.getElementById('prevName');
+const prevMeta =document.getElementById('prevMeta');
+const btnOk    =document.getElementById('btnOk');
+const mTitle   =document.getElementById('modalTitle');
 
-function resetModal(){
-  pending=null;
-  idInput.value='';
-  mStatus.innerHTML='';
-  manualWrap.innerHTML='';
-  previewEl.classList.remove('show');
-  btnOk.classList.remove('on');
-}
 function openModal(mode,guild,pi){
-  mMode=mode;mGuild=guild;mTarget=pi!=null?{guild,pi}:null;
-  resetModal();
+  mMode=mode; mGuild=guild; mTarget=pi!=null?{guild,pi}:null; pending=null;
+  idInput.value=''; mStatus.innerHTML='';
+  previewEl.classList.remove('show'); btnOk.classList.remove('on');
   mTitle.textContent=mode==='main'?'Ajouter un membre':'Ajouter un reroll';
   overlay.classList.add('open');
   setTimeout(()=>idInput.focus(),60);
 }
-function closeModal(){overlay.classList.remove('open');resetModal();}
+function closeModal(){
+  overlay.classList.remove('open');
+  const w=document.getElementById('manualWrap');
+  if(w) w.remove();
+}
 
 document.getElementById('modalX').addEventListener('click',closeModal);
 document.getElementById('btnCancel').addEventListener('click',closeModal);
@@ -244,59 +288,23 @@ overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
 btnOk.addEventListener('click',()=>{
   if(!pending) return;
   if(mMode==='main'){
+    if(!Array.isArray(data[mGuild])) data[mGuild]=[];
     if(data[mGuild].find(p=>p.id===pending.id)){mStatus.innerHTML=`<span class="err">Déjà dans la liste.</span>`;return;}
     data[mGuild].push({...pending,rerolls:[]});
-  }else{
-    const{guild,pi}=mTarget;
+  } else {
+    const {guild,pi}=mTarget;
+    if(!Array.isArray(data[guild][pi].rerolls)) data[guild][pi].rerolls=[];
     if(data[guild][pi].rerolls.find(r=>r.id===pending.id)){mStatus.innerHTML=`<span class="err">Reroll déjà ajouté.</span>`;return;}
     data[guild][pi].rerolls.push(pending);
   }
-  render();scheduleSave();closeModal();
+  render(); saveData(); closeModal();
 });
-
-function showPreview(p){
-  prevName.textContent=p.name;
-  prevName.className=`prev-name cc-${p.classKey}`;
-  prevMeta.innerHTML=[
-    p.faction?`<span style="display:inline-flex;align-items:center">${fac(p.faction,14)}</span>`:'',
-    p.classLabel||'',
-    p.level?`Niv.&nbsp;${p.level}`:'',
-    p.ilvl?`·&nbsp;${p.ilvl}&nbsp;iLvl`:'',
-  ].filter(Boolean).join('&nbsp;');
-  previewEl.classList.add('show');
-  btnOk.classList.add('on');
-}
-
-function showManual(id){
-  const classOpts=Object.entries(CLASS_MAP).map(([,c])=>`<option value="${c.key}">${c.label}</option>`).join('');
-  manualWrap.innerHTML=`
-    <label class="lbl">Nom du personnage</label>
-    <input class="inp" id="mfName" type="text" placeholder="Nom exact…"/>
-    <label class="lbl">Classe</label>
-    <select class="inp" id="mfClass"><option value="">— choisir —</option>${classOpts}</select>
-    <label class="lbl">Faction</label>
-    <select class="inp" id="mfFaction"><option value="a">Alliance</option><option value="h">Horde</option></select>`;
-  const check=()=>{
-    const n=document.getElementById('mfName').value.trim();
-    const c=document.getElementById('mfClass').value;
-    const f=document.getElementById('mfFaction').value;
-    if(n&&c){
-      const ci=Object.values(CLASS_MAP).find(x=>x.key===c);
-      pending={id:String(id),name:n,classKey:c,classLabel:ci?.label||'',faction:f,level:null,ilvl:null};
-      showPreview(pending);
-    }else{pending=null;btnOk.classList.remove('on');previewEl.classList.remove('show');}
-  };
-  document.getElementById('mfName').addEventListener('input',check);
-  document.getElementById('mfClass').addEventListener('change',check);
-  document.getElementById('mfFaction').addEventListener('change',check);
-  setTimeout(()=>document.getElementById('mfName')?.focus(),60);
-}
 
 let debounce;
 idInput.addEventListener('input',()=>{
-  clearTimeout(debounce);pending=null;
-  btnOk.classList.remove('on');previewEl.classList.remove('show');
-  manualWrap.innerHTML='';
+  clearTimeout(debounce); pending=null;
+  btnOk.classList.remove('on'); previewEl.classList.remove('show');
+  const w=document.getElementById('manualWrap'); if(w) w.remove();
   const val=idInput.value.trim().replace(/\D/g,'');
   if(!val){mStatus.innerHTML='';return;}
   mStatus.innerHTML=`<span class="spin"></span> Recherche…`;
@@ -305,68 +313,114 @@ idInput.addEventListener('input',()=>{
     const p=parseWoW(json,val);
     if(p){
       pending=p;
+      prevName.textContent=p.name; prevName.className=`prev-name cc-${p.classKey}`;
+      prevMeta.innerHTML=[
+        p.faction?`<span style="display:inline-flex;align-items:center">${fac(p.faction,14)}</span>`:'',
+        p.classLabel,
+        p.level?`Niv.&nbsp;${p.level}`:'',
+        p.ilvl?`·&nbsp;${p.ilvl}&nbsp;iLvl`:'',
+      ].filter(Boolean).join('&nbsp;');
+      previewEl.classList.add('show');
       mStatus.innerHTML=`<span class="ok">✓ ${p.name} trouvé·e</span>`;
-      showPreview(p);
-    }else{
-      mStatus.innerHTML=`<span class="err">API inaccessible — remplis les champs ci-dessous.</span>`;
+      btnOk.classList.add('on');
+    } else {
+      mStatus.innerHTML=`<span class="err">Introuvable via proxy. Entre le nom manuellement.</span>`;
       showManual(val);
     }
   },500);
 });
 
+function showManual(id){
+  if(document.getElementById('manualWrap')) return;
+  const wrap=document.createElement('div'); wrap.id='manualWrap'; wrap.style.cssText='margin-bottom:14px';
+  wrap.innerHTML=`
+    <label class="lbl" style="margin-top:4px">Nom du personnage</label>
+    <input class="inp" id="mName" type="text" placeholder="Nom exact…" style="margin-bottom:10px"/>
+    <label class="lbl">Classe</label>
+    <select class="inp" id="mClass" style="cursor:pointer;margin-bottom:10px">
+      <option value="unknown">— choisir —</option>
+      ${Object.entries(CLASS_MAP).map(([,c])=>`<option value="${c.key}">${c.label}</option>`).join('')}
+    </select>
+    <label class="lbl">Faction</label>
+    <select class="inp" id="mFac" style="cursor:pointer"><option value="a">Alliance</option><option value="h">Horde</option></select>`;
+  previewEl.parentNode.insertBefore(wrap,previewEl);
+  const check=()=>{
+    const n=document.getElementById('mName').value.trim();
+    const c=document.getElementById('mClass').value;
+    const f=document.getElementById('mFac').value;
+    if(n&&c!=='unknown'){
+      const ci=Object.values(CLASS_MAP).find(x=>x.key===c);
+      pending={id:String(id),name:n,classKey:c,classLabel:ci?.label||'',faction:f,level:null,ilvl:null};
+      prevName.textContent=n; prevName.className=`prev-name cc-${c}`;
+      prevMeta.innerHTML=`<span style="display:inline-flex">${fac(f,14)}</span>&nbsp;${ci?.label||''}`;
+      previewEl.classList.add('show'); btnOk.classList.add('on');
+    } else { pending=null; btnOk.classList.remove('on'); previewEl.classList.remove('show'); }
+  };
+  document.getElementById('mName').addEventListener('input',check);
+  document.getElementById('mClass').addEventListener('change',check);
+  document.getElementById('mFac').addEventListener('change',check);
+  setTimeout(()=>document.getElementById('mName').focus(),60);
+}
+
 // ── Render ─────────────────────────────────────────────────────────────────
 function render(){
-  const grid=document.getElementById('grid');grid.innerHTML='';
+  const grid=document.getElementById('grid'); grid.innerHTML='';
   GUILDS.forEach(g=>{
-    const players=data[g.key]||[];
-    const panel=document.createElement('div');panel.className=`panel ${g.cls}`;
-    const ph=document.createElement('div');ph.className='panel-hdr';
+    const players=Array.isArray(data[g.key])?data[g.key]:[];
+    const panel=document.createElement('div'); panel.className=`panel ${g.cls}`;
+    const ph=document.createElement('div'); ph.className='panel-hdr';
     ph.innerHTML=`<div class="emblem">${g.icon}</div><div><div class="guild-name-el">${g.label}</div><div class="guild-sub">${players.length} membre${players.length!==1?'s':''}</div></div>`;
-    const amb=document.createElement('button');amb.className='add-main-btn';
+    const amb=document.createElement('button'); amb.className='add-main-btn';
     amb.innerHTML=`<span style="font-size:14px;line-height:1">+</span>&nbsp;Membre`;
     amb.addEventListener('click',()=>openModal('main',g.key));
-    ph.appendChild(amb);panel.appendChild(ph);
-    const ch=document.createElement('div');ch.className='col-hdrs';
+    ph.appendChild(amb); panel.appendChild(ph);
+    const ch=document.createElement('div'); ch.className='col-hdrs';
     ch.innerHTML=`<div class="col-h">Personnage</div><div class="col-h r">iLvl</div>`;
     panel.appendChild(ch);
+
     players.forEach((p,pi)=>{
-      const row=document.createElement('div');row.className='player';
-      const left=document.createElement('div');left.className='player-left';
+      const row=document.createElement('div'); row.className='player';
+      const left=document.createElement('div'); left.className='player-left';
       if(p.faction){const fi=document.createElement('span');fi.className='fac';fi.innerHTML=fac(p.faction,15);left.appendChild(fi);}
       else{const sp=document.createElement('span');sp.style.cssText='width:15px;display:inline-block';left.appendChild(sp);}
       const nm=document.createElement(p.id?'a':'span');
-      nm.className=`main-name cc-${p.classKey}`;nm.textContent=p.name;
+      nm.className=`main-name cc-${p.classKey}`; nm.textContent=p.name;
       if(p.id){nm.href=ARMORY+p.id;nm.target='_blank';nm.rel='noopener';}
-      left.appendChild(nm);row.appendChild(left);
-      const ic=document.createElement('div');ic.className=`ilvl-cell ${ilvlCls(p.ilvl)}`;ic.textContent=p.ilvl||'—';row.appendChild(ic);
-      const dp=document.createElement('span');dp.className='del-player';dp.textContent='×';dp.title='Supprimer';
-      dp.addEventListener('click',e=>{e.stopPropagation();if(confirm(`Supprimer ${p.name} ?`)){data[g.key].splice(pi,1);render();scheduleSave();}});
-      row.appendChild(dp);panel.appendChild(row);
-      const rr=document.createElement('div');rr.className='rerolls-row';
-      (p.rerolls||[]).forEach((r,ri)=>{
-        const wrap=document.createElement('div');wrap.className='chip-wrap';
+      left.appendChild(nm); row.appendChild(left);
+      const ic=document.createElement('div');
+      ic.className=`ilvl-cell ${ilvlCls(p.ilvl)}`; ic.textContent=p.ilvl||'—';
+      row.appendChild(ic);
+      const dp=document.createElement('span'); dp.className='del-player'; dp.textContent='×'; dp.title='Supprimer';
+      dp.addEventListener('click',e=>{
+        e.stopPropagation();
+        if(confirm(`Supprimer ${p.name} ?`)){data[g.key].splice(pi,1);render();saveData();}
+      });
+      row.appendChild(dp); panel.appendChild(row);
+
+      const rr=document.createElement('div'); rr.className='rerolls-row';
+      (Array.isArray(p.rerolls)?p.rerolls:[]).forEach((r,ri)=>{
+        const wrap=document.createElement('div'); wrap.className='chip-wrap';
         const chip=document.createElement(r.id?'a':'span');
         chip.className=`chip cc-${r.classKey}`;
         if(r.id){chip.href=ARMORY+r.id;chip.target='_blank';chip.rel='noopener';}
         if(r.faction){const fi=document.createElement('span');fi.className='chip-fac';fi.innerHTML=fac(r.faction,12);chip.appendChild(fi);}
         const ns=document.createElement('span');ns.textContent=r.name;chip.appendChild(ns);
-        const del=document.createElement('span');del.className='chip-del';del.textContent='×';
-        del.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();data[g.key][pi].rerolls.splice(ri,1);render();scheduleSave();});
+        const del=document.createElement('span'); del.className='chip-del'; del.textContent='×';
+        del.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();data[g.key][pi].rerolls.splice(ri,1);render();saveData();});
         chip.appendChild(del);
-        const tt=document.createElement('div');tt.className='tooltip';
+        const tt=document.createElement('div'); tt.className='tooltip';
         tt.innerHTML=`<div class="tt-name cc-${r.classKey}">${r.name}</div><div class="tt-row">${r.faction?`<span style="display:inline-flex">${fac(r.faction,13)}</span>`:''}<span>${r.classLabel||'?'}</span>${r.level?`<span class="tt-sep">·</span><span>Niv. ${r.level}</span>`:''}${r.ilvl?`<span class="tt-sep">·</span><span class="${ilvlCls(r.ilvl)}">${r.ilvl} iLvl</span>`:''}</div>`;
-        wrap.appendChild(chip);wrap.appendChild(tt);rr.appendChild(wrap);
+        wrap.appendChild(chip); wrap.appendChild(tt); rr.appendChild(wrap);
       });
-      const arb=document.createElement('button');arb.className='add-reroll-btn';arb.textContent='+ reroll';
+      const arb=document.createElement('button'); arb.className='add-reroll-btn'; arb.textContent='+ reroll';
       arb.addEventListener('click',()=>openModal('reroll',g.key,pi));
-      rr.appendChild(arb);panel.appendChild(rr);
+      rr.appendChild(arb); panel.appendChild(rr);
     });
     grid.appendChild(panel);
   });
 }
 
 render();
-loadData();
 </script>
 </body>
 </html>
